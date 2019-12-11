@@ -1,4 +1,4 @@
-# counter
+# Counter
 Counter plugin with countdown and progress bar, flexible and easily customizable
 
 # Installation
@@ -10,8 +10,24 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
   npm install @iladiro/counter
   ```
 
-# Usage
+# Basic usage
 
-Instance the plugin and pass the right configuration
+  Instance the plugin, pass right configuration and call init() method.
+  
+  Required fields are:
+  * container
+  * start
+  * end
+  ```
+  let counter = new Counter({
+    "container": "#counter",
+    "start": "2019/12/01 00:00:00",
+    "end": "2020/12/11 16:30:00"
+  });
+  counter.init();
+  ```
+
 
 # Options
+
+  Other options are available besides the mandatory ones
