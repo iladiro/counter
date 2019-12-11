@@ -1,0 +1,14 @@
+{
+  "name": "@iladiro/counter",
+  "version": "1.0.0",
+  "description": "Counter",
+  "license": "MIT",
+  "repository": "iladiro/counter",
+  "main": "index.js",
+  "keywords": [
+    "counter",
+    "npm",
+    "package",
+    "iladiro"
+  ]
+}

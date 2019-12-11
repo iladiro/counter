@@ -1,0 +1,166 @@
+@mixin perspective($val) {
+  -webkit-perspective: $val;
+	-moz-perspective: $val;
+	-o-perspective: $val;
+	-ms-perspective: $val;
+	perspective: $val;
+}
+
+@mixin transform-style($val) {
+  -webkit-transform-style: $val; /* Safari 4-8 */
+  transform-style: $val;
+}
+
+@mixin font-style($size, $color, $line-height: normal, $weight: 300){
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+  font-weight: $weight;
+}
+
+@mixin position($x, $Xval, $y, $Yval, $type: absolute){
+  position: $type;
+  #{$x}: $Xval;
+  #{$y}: $Yval;
+}
+
+@mixin placeholder($size, $color: #656D78) {
+  // Firefox
+  &::-moz-placeholder {
+    font-size: $size;
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-size: $size;
+  } // Internet Explorer 10+
+  &::-webkit-input-placeholder  {
+    color: $color;
+    font-size: $size;
+  } // Safari and Chrome
+}
+
+@mixin size($width, $height){
+  width: $width;
+  height: $height;
+}
+
+@mixin spaces($padding, $margin){
+  padding: $padding;
+  margin: $margin;
+}
+
+@mixin displayFlex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin alignItems($val) {
+  -webkit-box-align: $val;
+  -ms-flex-align: $val;
+  align-items: $val;
+}
+
+@mixin flexDirection($val) {
+  -webkit-flex-direction: $val; /* Safari 6.1+ */
+  flex-direction: $val;
+}
+
+@mixin flexJustifyContent($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin flexWrap($val) {
+  -webkit-flex-wrap: $val; /* Safari 6.1+ */
+  -ms-flex-wrap: $val;
+  flex-wrap: $val;
+}
+
+@mixin border-radius($arg) {
+  -webkit-border-radius: $arg;
+  -moz-border-radius: $arg;
+  -ms-border-radius: $arg;
+  -o-border-radius: $arg;
+  border-radius: $arg;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin circle($size) {
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin center-cont-block($width) {
+  width: $width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin border($size, $color, $side: nil, $type: solid){
+  @if ($side == 'nil') {
+    border: $size $type $color;
+  } @else {
+    border-#{$side}: $size $type $color;
+  }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin gradient-generic($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}

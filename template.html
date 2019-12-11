@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!--- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/css/style.min.css" />
+    <!--- /CSS -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="i-counter" id="counter">
+    <h3 class="i-counter__title">
+      Tempo residuo offerta
+    </h3>
+    <div class="i-counter__bar" data-counter="progress_bar">
+      <span class="i-counter__bar--missing" data-counter="missing"></span>
+      <span class="i-counter__bar--past" data-counter="past">
+    </div>
+    <div class="i-counter__countdown">
+      <div class="i-counter__countdown-time" data-counter="countdown">
+        <div>
+          <p class="i-counter__countdown-value" data-counter="days">0</p>
+          <label class="i-counter__countdown-label" data-counter="days_label"></label>
+        </div>
+        <div>
+          <p class="i-counter__countdown-value" data-counter="hours">0</p>
+          <label class="i-counter__countdown-label" data-counter="hours_label"></label>
+        </div>
+        <div>
+          <p class="i-counter__countdown-value" data-counter="minutes">0</p>
+          <label class="i-counter__countdown-label" data-counter="minutes_label"></label>
+        </div>
+        <div>
+          <p class="i-counter__countdown-value" data-counter="seconds">0</p>
+          <label class="i-counter__countdown-label" data-counter="seconds_label"></label>
+        </div>
+      </div>
+      <p class="i-counter__expired-alert" data-counter="expired_alert">L'offerta è scaduta</p>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
