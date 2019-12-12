@@ -6,40 +6,29 @@
 
 const Counter = (function() {
 
-  console.log("entrato");
-
   const _opts = Symbol();
 
   class Counter {
 
     constructor(opts) {
 
-      console.log(opts);
-
       this.countdown_run = "";
       this.progressbar_run = "";
-
-      const label_textes_default = {
-        "days": "days",
-        "hours": "hours",
-        "minutes": "min",
-        "seconds": "sec"
-      }
-      const expired_alert_default = "Time out"
 
       this.validation = this.checkAllFieldsPassed(opts);
       if(this.validation == undefined) {
         this.config = {
           "container": opts.container,
-          "add_class_to_parent": opts.add_class_to_parent,
           "start_date": opts.start,
           "end_date": opts.end,
-          "bg_color": opts.bg_color_class,
+          "add_class_to_parent": opts.add_class_to_parent ? opts.add_class_to_parent : undefined,
+          "bg_color": opts.bg_color_class ? opts.bg_color_class : undefined,
           "progressbar": opts.progressbar === false ? false : true,
           "countdown": opts.countdown === false ? false : true,
-          "label_textes": opts.label_textes ? opts.label_textes : label_textes_default,
-          "size_progressbar": opts.size_progressbar,
-          "expired_alert": opts.expired_alert ? opts.expired_alert : expired_alert_default,
+          "label_textes": opts.label_textes ? opts.label_textes : undefined,
+          "size_progressbar": opts.size_progressbar ? opts.size_progressbar : undefined,
+          "expired_alert": opts.expired_alert ? opts.expired_alert : undefined,
+          "title": opts.title ? opts.title : undefined,
           "distance": ""
         }
       }
@@ -58,7 +47,8 @@ const Counter = (function() {
         "progress_bar": document.querySelector(this.config.container).querySelector('[data-counter="progress_bar"]'),
         "missing_field": document.querySelector(this.config.container).querySelector('[data-counter="missing"]'),
         "past_field": document.querySelector(this.config.container).querySelector('[data-counter="past"]'),
-        "countdown": document.querySelector(this.config.container).querySelector('[data-counter="countdown"]')
+        "countdown": document.querySelector(this.config.container).querySelector('[data-counter="countdown"]'),
+        "title": document.querySelector(this.config.container).querySelector('[data-counter="title"]')
       }
       // end
     }
@@ -184,7 +174,9 @@ const Counter = (function() {
     }
 
     printExpiredText() {
-      this.selectors.expired_alert.innerText = this.config.expired_alert;
+      if(this.config.expired_alert !== undefined) {
+        this.selectors.expired_alert.innerText = this.config.expired_alert;
+      }
       document.querySelector(this.config.container).classList.add("expired");
     }
 
@@ -196,15 +188,29 @@ const Counter = (function() {
     }
 
     printLabel() {
-      this.selectors.days_label.innerText = this.config.label_textes.days;
-      this.selectors.hours_label.innerText = this.config.label_textes.hours;
-      this.selectors.minutes_label.innerText = this.config.label_textes.minutes;
-      this.selectors.seconds_label.innerText = this.config.label_textes.seconds;
+      if(this.config.label_textes !== undefined) {
+        this.selectors.days_label.innerText = this.config.label_textes.days;
+        this.selectors.hours_label.innerText = this.config.label_textes.hours;
+        this.selectors.minutes_label.innerText = this.config.label_textes.minutes;
+        this.selectors.seconds_label.innerText = this.config.label_textes.seconds;
+      }
+    }
+
+    printTitle() {
+      if(this.config.title !== undefined) {
+        this.selectors.title.innerText = this.config.title;
+      }
     }
 
     destroy(callback) {
       //console.log(callback);
       clearInterval(callback);
+    }
+
+    changeColorToProgressbar() {
+      if(this.config.bg_color !== undefined) {
+        this.selectors.missing_field.classList.add(this.config.bg_color);
+      }
     }
 
     progressCounterBar() {
@@ -233,7 +239,7 @@ const Counter = (function() {
     }
 
     progressbarSize() {
-      if(this.config.size_progressbar != undefined || this.config.size_progressbar != null || this.config.size_progressbar != "") {
+      if(this.config.size_progressbar != undefined) {
         if(this.config.size_progressbar == "xs") {
           this.selectors.progress_bar.classList.add("counter__bar--xs");
         } else if(this.config.size_progressbar == "sm") {
@@ -253,7 +259,9 @@ const Counter = (function() {
       this.config.total_time = this.calculateTotalTime();
 
       this.printLabel();
+      this.printTitle();
       this.progressbarSize();
+      this.changeColorToProgressbar();
 
       if(this.config.add_class_to_parent) {
         document.querySelector(this.config.container).classList.add(this.config.add_class_to_parent);
@@ -293,17 +301,7 @@ var counter = new Counter(
     "add_class_to_parent": "custom-count",
     "start": "2019/12/01 00:00:00",
     "end": "2019/12/24 18:56:00",
-    "bg_color_class": "bg--orange",
-    "progressbar": true,
-    "countdown": true,
-    "size_progressbar": "sm",
-    "expired_alert": "L'offerta è scaduta",
-    "label_textes": {
-      "days": "Giorni",
-      "hours": "Ore",
-      "minutes": "Min",
-      "seconds": "Sec"
-    }
+    "expired_alert": "L'offerta è scaduta"
   }
 )
 

@@ -19,8 +19,8 @@
 
 <body>
   <div class="i-counter" id="counter">
-    <h3 class="i-counter__title">
-      Tempo residuo offerta
+    <h3 class="i-counter__title" data-counter="title">
+      Remaining time offered
     </h3>
     <div class="i-counter__bar" data-counter="progress_bar">
       <span class="i-counter__bar--missing" data-counter="missing"></span>
@@ -30,22 +30,22 @@
       <div class="i-counter__countdown-time" data-counter="countdown">
         <div>
           <p class="i-counter__countdown-value" data-counter="days">0</p>
-          <label class="i-counter__countdown-label" data-counter="days_label"></label>
+          <label class="i-counter__countdown-label" data-counter="days_label">days</label>
         </div>
         <div>
           <p class="i-counter__countdown-value" data-counter="hours">0</p>
-          <label class="i-counter__countdown-label" data-counter="hours_label"></label>
+          <label class="i-counter__countdown-label" data-counter="hours_label">hours</label>
         </div>
         <div>
           <p class="i-counter__countdown-value" data-counter="minutes">0</p>
-          <label class="i-counter__countdown-label" data-counter="minutes_label"></label>
+          <label class="i-counter__countdown-label" data-counter="minutes_label">min</label>
         </div>
         <div>
           <p class="i-counter__countdown-value" data-counter="seconds">0</p>
-          <label class="i-counter__countdown-label" data-counter="seconds_label"></label>
+          <label class="i-counter__countdown-label" data-counter="seconds_label">sec</label>
         </div>
       </div>
-      <p class="i-counter__expired-alert" data-counter="expired_alert">L'offerta è scaduta</p>
+      <p class="i-counter__expired-alert" data-counter="expired_alert">Time out</p>
     </div>
   </div>
 
