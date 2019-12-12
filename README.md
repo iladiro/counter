@@ -1,15 +1,6 @@
 # Counter
 Counter plugin with countdown and progress bar, flexible and easily customizable
 
-# Installation
-  Make sure you've included jQuery first
-
-  then
-
-  ```
-  npm install @iladiro/counter
-  ```
-
 # Before start
   
   1. [Download ZIP](https://github.com/iladiro/counter/archive/master.zip)
@@ -39,3 +30,24 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
 # Options
 
   Other options are available besides the mandatory ones
+  
+  property | type | value | required | notes
+  ------------ | -------------
+  container | string | ex. #counter | yes | This field is mandatory
+  start | string | ex. "2019/12/01 00:00:00" | yes | The format to be used is yyyy/mm/dd hh:mm:ss
+  end | string | ex. "2019/12/31 00:00:00" | yes | The format to be used is yyyy/mm/dd hh:mm:ss
+  progressbar | boolean | true or false | no | To show or not the progress bar. The field is not mandatory, but by default it is true
+  countdown | boolean | true or false | no | To show or not the progress bar. The field is not mandatory, but by default it is true
+  add_class_to_parent | string | ex. custom-counter | no | Just to customizing counter
+  bg_color | string | ex. "orange" | no | In the css there is the basic color of the plugin, but with this property you can pass a class to overwrite the base color
+  label_textes | object | ex. {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Min",
+      "seconds": "Sec"
+    } | no | If nothing is passed the default is {
+        "days": "days",
+        "hours": "hours",
+        "minutes": "min",
+        "seconds": "sec"
+      }
