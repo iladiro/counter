@@ -1,14 +1,27 @@
 {
   "name": "@iladiro/counter",
-  "version": "1.0.0",
-  "description": "Counter",
+  "version": "2.0.0",
+  "description": "Counter plugin with countdown and progress bar, flexible and easily customizable",
   "license": "MIT",
   "repository": "iladiro/counter",
-  "main": "index.js",
+  "main": "assets/javascript/counter.js",
   "keywords": [
     "counter",
     "npm",
     "package",
-    "iladiro"
-  ]
+    "iladiro",
+    "countdown",
+    "progressbar",
+    "pure javascript",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iladiro/counter"
+  },
+  "author": {
+    "name": "Iladiro",
+    "email": "dirosa.ilaria@gmail.com",
+    "url": "http://ilariadirosa.it/"
+  }
 }
