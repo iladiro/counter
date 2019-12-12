@@ -294,15 +294,3 @@ const Counter = (function() {
 
   return Counter;
 }());
-
-var counter = new Counter(
-  {
-    "container": "#counter",
-    "add_class_to_parent": "custom-count",
-    "start": "2019/12/01 00:00:00",
-    "end": "2019/12/24 18:56:00",
-    "expired_alert": "L'offerta è scaduta"
-  }
-)
-
-counter.start();
