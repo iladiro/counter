@@ -2,15 +2,17 @@
 Counter plugin with countdown and progress bar, flexible and easily customizable
 
 # Before start
-  
+
   1. [Download ZIP](https://github.com/iladiro/counter/archive/master.zip)
   2. First, copy and paste counter.js in your project, and link to it before the closing </body> element.
   3. Next, you need to copy and paste css into your project. We can include both SASS or CSS file.
-  
-  
+
+
 # Getting Setup
-  
+
   Instance the plugin, pass right configuration and call start() method.
+
+  Note: This plugin does not need jQuery.
 
       ```
       let counter = new Counter({
@@ -20,10 +22,11 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
       });
       counter.start();
       ```
-  
-  Note: This plugin does not need jQuery.
-  
+
 # Template
+
+This is the basic template, but through the data attributes, which you find in the code below, you can create another template
+
 ```
 <div class="i-counter" id="counter">
     <h3 class="i-counter__title" data-counter="title">
@@ -62,7 +65,7 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
 # Options
 
   Other options are available besides the mandatory ones
-  
+
   property | type | required | default | notes
   ------------ | ------------- | ------------- | ------------- | -------------
   container | ``` string ``` | yes | ``` undefined ``` | This field is mandatory
