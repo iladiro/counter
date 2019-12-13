@@ -7,7 +7,6 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
   2. First, copy and paste counter.js in your project, and link to it before the closing </body> element.
   3. Next, you need to copy and paste css into your project. We can include both SASS or CSS file.
 
-
 # Getting Setup
 
   Instance the plugin, pass right configuration and call start() method.
@@ -26,6 +25,8 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
 # Template
 
 This is the basic template, but through the data attributes, which you find in the code below, you can create another template
+
+[DEMO](https://jsbin.com/qiwobev/edit?html,css,js,output)
 
 ```
 <div class="i-counter" id="counter">
