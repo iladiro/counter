@@ -76,5 +76,5 @@ This is the basic template, but through the data attributes, which you find in t
   countdown | ``` boolean ``` | no | ``` true ``` | To show or not the progress bar. The field is not mandatory, but by default it is true
   add_class_to_parent | ``` string ``` | no | ``` undefined ``` | Just to customizing counter
   bg_color | ``` string ``` | no | ``` undefined ``` | In the css there is the basic color of the plugin, but with this property you can pass a class to overwrite the base color
-  label_textes | ``` object ``` | no | "Days", "Hours", "Min", "Sec" | If nothing is passed the default is "Days", "Hours", "Min", "Sec". This is the object you expect:  ``` {  "days": "", "hours": "", "minutes": "", "seconds": "" }  ```
+  labels | ``` object ``` | no | "Days", "Hours", "Min", "Sec" | If nothing is passed the default is "Days", "Hours", "Min", "Sec". This is the object you expect:  ``` {  "days": "", "hours": "", "minutes": "", "seconds": "" }  ```
   expired_alert | ``` "string" ``` | no | Time out | if no value is passed, the default value is the one passed in the default column
