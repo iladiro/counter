@@ -24,9 +24,10 @@ const Counter = (function() {
           "add_class_to_parent": opts.add_class_to_parent ? opts.add_class_to_parent : undefined,
           "bg_color": opts.bg_color_class ? opts.bg_color_class : undefined,
           "progressbar": opts.progressbar === false ? false : true,
+          "progressbar_percentage": opts.progressbar_percentage === false ? false : true,
+          "progressbar_size": opts.progressbar_size ? opts.progressbar_size : undefined,
           "countdown": opts.countdown === false ? false : true,
           "labels": opts.labels ? opts.labels : undefined,
-          "progressbar_size": opts.progressbar_size ? opts.progressbar_size : undefined,
           "expired_alert": opts.expired_alert ? opts.expired_alert : undefined,
           "title": opts.title ? opts.title : undefined,
           "distance": ""
@@ -45,8 +46,11 @@ const Counter = (function() {
         "seconds_label": document.querySelector(this.config.container).querySelector('[data-counter="seconds_label"]'),
         "expired_alert": document.querySelector(this.config.container).querySelector('[data-counter="expired_alert"]'),
         "progressbar": document.querySelector(this.config.container).querySelector('[data-counter="progressbar"]'),
+        "progressbar_percentage": document.querySelector(this.config.container).querySelector('[data-counter="progressbar_percentage"]'),
         "missing_field": document.querySelector(this.config.container).querySelector('[data-counter="missing"]'),
+        "missing_percentage": document.querySelector(this.config.container).querySelector('[data-counter="missing_percentage"]'),
         "past_field": document.querySelector(this.config.container).querySelector('[data-counter="past"]'),
+        "past_percentage": document.querySelector(this.config.container).querySelector('[data-counter="past_percentage"]'),
         "countdown": document.querySelector(this.config.container).querySelector('[data-counter="countdown"]'),
         "title": document.querySelector(this.config.container).querySelector('[data-counter="title"]')
       }
@@ -247,6 +251,23 @@ const Counter = (function() {
       //console.log(obj);
       this.selectors.missing_field.style.width = obj.missing + "%";
       this.selectors.past_field.style.width = obj.past + "%";
+
+      // progressbar percentage
+      if(this.config.progressbar_percentage) {
+        if(this.selectors.missing_percentage && this.selectors.past_percentage) {
+          this.selectors.missing_percentage.innerText = Math.round(obj.missing) + "%";
+          this.selectors.past_percentage.innerText = Math.round(obj.past) + "%";
+        } else {
+          throw 'It was impossible to retrieve the selector (data-counter = "missing_percentage"),' +
+          ' (data-counter = "past_percentage"). It is mandatory to insert them in' +
+          ' the template if the "progressbar_percentage" is true'
+        }
+      } else {
+        if(this.selectors.progressbar_percentage) {
+          this.selectors.progressbar_percentage.remove();
+        }
+      }
+      // end
     }
 
     progressbarSize() {

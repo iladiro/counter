@@ -17,35 +17,43 @@
     margin-bottom: 15px;
     @include font-style(1em, #42474D, 1.4375em, normal);
   }
-  &__bar {
-    @include size(100%, 7px);
-    position: relative;
-    overflow: hidden;
-    @include displayFlex();
-    @include alignItems(center);
+  &__progressbar {
     margin-bottom: 15px;
-    &--xs {
-      height: 4px;
+    &-line {
+      @include size(100%, 7px);
+      position: relative;
+      overflow: hidden;
+      @include displayFlex();
+      @include alignItems(center);
+      margin-bottom: 5px;
+      &--xs {
+        height: 4px;
+      }
+      &--sm {
+        height: 7px;
+      }
+      &--md {
+        height: 14px;
+      }
+      &--lg {
+        height: 21px;
+      }
+      &-missing {
+        @include size(100%, 100%);
+        background-color: #d49c9c;
+        //background: linear-gradient(306.6deg, #FF3C00 0%, #FFA400 100%);
+        @include box-shadow(0 3px 10px 0 rgba(112,112,112,0.5));
+        border-radius: 35px;
+      }
+      &-past {
+        height: 1px;
+        background-color: #A8ADB0;
+      }
     }
-    &--sm {
-      height: 7px;
-    }
-    &--md {
-      height: 14px;
-    }
-    &--lg {
-      height: 21px;
-    }
-    &--missing {
-      @include size(100%, 100%);
-      background-color: #d49c9c;
-      //background: linear-gradient(306.6deg, #FF3C00 0%, #FFA400 100%);
-      @include box-shadow(0 3px 10px 0 rgba(112,112,112,0.5));
-      border-radius: 35px;
-    }
-    &--past {
-      height: 1px;
-      background-color: #A8ADB0;
+    &-percentage {
+      @include displayFlex();
+      @include flexJustifyContent(space-between);
+      @include font-style(0.625em, #A8ADB0, 1.4375em, normal);
     }
   }
   &__countdown {
