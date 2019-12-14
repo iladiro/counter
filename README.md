@@ -33,7 +33,7 @@ This is the basic template, but through the data attributes, which you find in t
     <h3 class="i-counter__title" data-counter="title">
       Remaining time offered
     </h3>
-    <div class="i-counter__bar" data-counter="progress_bar">
+    <div class="i-counter__bar" data-counter="progressbar">
       <span class="i-counter__bar--missing" data-counter="missing"></span>
       <span class="i-counter__bar--past" data-counter="past">
     </div>
@@ -71,7 +71,7 @@ Below the data attributes to use in your template
   - **expired message**: data-counter: "expired_alert"
 
 **Progressbar**:
-  - **progressbar container**: data-counter: "progress_bar",
+  - **progressbar container**: data-counter: "progressbar",
   - **missing field**: data-counter="missing",
   - **past field**: data-counter="past"
 
