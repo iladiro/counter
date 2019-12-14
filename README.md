@@ -33,14 +33,14 @@ This is the basic template, but through the data attributes, which you find in t
     <h3 class="i-counter__title" data-counter="title">
       Remaining time offered
     </h3>
-    <div data-counter="progressbar">
-      <div class="i-counter__bar">
-        <span class="i-counter__bar--missing" data-counter="missing"></span>
-        <span class="i-counter__bar--past" data-counter="past">
+    <div class="i-counter__progressbar" data-counter="progressbar">
+      <div class="i-counter__progressbar-line">
+        <span class="i-counter__progressbar-line-missing" data-counter="missing"></span>
+        <span class="i-counter__progressbar-line-past" data-counter="past">
       </div>
-      <div class="i-counter__percentage" data-counter="progressbar_percentage">
-        <span data-counter="missing_percentage">0%</span>
-        <span data-counter="past_percentage">0%</span>
+      <div class="i-counter__progressbar-percentage" data-counter="progressbar_percentage">
+        <span class="i-counter__progressbar-percentage-missing" data-counter="missing_percentage">0%</span>
+        <span class="i-counter__progressbar-percentage-past" data-counter="past_percentage">0%</span>
       </div>
     </div>
     <div class="i-counter__countdown">
