@@ -62,6 +62,26 @@ This is the basic template, but through the data attributes, which you find in t
 
 ```
 
+# Data attribute
+
+Below the data attributes to use in your template
+
+  **Progressbar**:
+    - **progressbar container**: data-counter: "progress_bar",
+    - **missing field**: data-counter="missing",
+    - **past field**: data-counter="past"
+
+  **Countdown**:
+    - **countdown container**: data-counter="countdown",
+    - **days text**: data-counter="days",
+    - **days label**: data-counter: "days_label",
+    - **hours text**: data-counter="hours",
+    - **hours label**: data-counter: "hours_label",
+    - **minutes text**: data-counter="minutes",
+    - **minutes label**: data-counter: "minutes_label",
+    - **seconds text**: data-counter="seconds",
+    - **seconds label**: data-counter: "seconds_label"
+
 
 # Options
 
@@ -78,3 +98,4 @@ This is the basic template, but through the data attributes, which you find in t
   bg_color | ``` string ``` | no | ``` undefined ``` | In the css there is the basic color of the plugin, but with this property you can pass a class to overwrite the base color
   labels | ``` object ``` | no | "Days", "Hours", "Min", "Sec" | If nothing is passed the default is "Days", "Hours", "Min", "Sec". This is the object you expect:  ``` {  "days": "", "hours": "", "minutes": "", "seconds": "" }  ```
   expired_alert | ``` "string" ``` | no | Time out | if no value is passed, the default value is the one passed in the default column
+  title | ``` "string" ``` | no | ``` undefined ``` | The "title" can be statically inserted into the template or dynamically by enhancing the "title" property and inserting the data attribute "data-counter = 'title'" into the template
