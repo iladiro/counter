@@ -66,21 +66,21 @@ This is the basic template, but through the data attributes, which you find in t
 
 Below the data attributes to use in your template
 
-  **Progressbar**:
-    - **progressbar container**: data-counter: "progress_bar",
-    - **missing field**: data-counter="missing",
-    - **past field**: data-counter="past"
+**Progressbar**:
+  - **progressbar container**: data-counter: "progress_bar",
+  - **missing field**: data-counter="missing",
+  - **past field**: data-counter="past"
 
-  **Countdown**:
-    - **countdown container**: data-counter="countdown",
-    - **days text**: data-counter="days",
-    - **days label**: data-counter: "days_label",
-    - **hours text**: data-counter="hours",
-    - **hours label**: data-counter: "hours_label",
-    - **minutes text**: data-counter="minutes",
-    - **minutes label**: data-counter: "minutes_label",
-    - **seconds text**: data-counter="seconds",
-    - **seconds label**: data-counter: "seconds_label"
+**Countdown**:
+  - **countdown container**: data-counter="countdown",
+  - **days text**: data-counter="days",
+  - **days label**: data-counter: "days_label",
+  - **hours text**: data-counter="hours",
+  - **hours label**: data-counter: "hours_label",
+  - **minutes text**: data-counter="minutes",
+  - **minutes label**: data-counter: "minutes_label",
+  - **seconds text**: data-counter="seconds",
+  - **seconds label**: data-counter: "seconds_label"
 
 
 # Options
