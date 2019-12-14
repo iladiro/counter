@@ -33,9 +33,15 @@ This is the basic template, but through the data attributes, which you find in t
     <h3 class="i-counter__title" data-counter="title">
       Remaining time offered
     </h3>
-    <div class="i-counter__bar" data-counter="progressbar">
-      <span class="i-counter__bar--missing" data-counter="missing"></span>
-      <span class="i-counter__bar--past" data-counter="past">
+    <div data-counter="progressbar">
+      <div class="i-counter__bar">
+        <span class="i-counter__bar--missing" data-counter="missing"></span>
+        <span class="i-counter__bar--past" data-counter="past">
+      </div>
+      <div class="i-counter__percentage" data-counter="progressbar_percentage">
+        <span data-counter="missing_percentage">0%</span>
+        <span data-counter="past_percentage">0%</span>
+      </div>
     </div>
     <div class="i-counter__countdown">
       <div class="i-counter__countdown-time" data-counter="countdown">
@@ -73,7 +79,10 @@ Below the data attributes to use in your template
 **Progressbar**:
   - **progressbar container**: data-counter: "progressbar",
   - **missing field**: data-counter="missing",
-  - **past field**: data-counter="past"
+  - **past field**: data-counter="past",
+  - **progressbar percentage container**: data-counter="progressbar_percentage",
+  - **missing percentage**: data-counter="missing_percentage",
+  - **past percentage**: data-counter="past_percentage",
 
 **Countdown**:
   - **countdown container**: data-counter="countdown",
@@ -97,6 +106,7 @@ Below the data attributes to use in your template
   start | ``` string ``` | yes | ``` undefined ``` | The format to be used is yyyy/mm/dd hh:mm:ss
   end | ``` string ``` | yes | ``` undefined ``` | The format to be used is yyyy/mm/dd hh:mm:ss
   progressbar | ``` boolean ``` | no | ``` true ``` | To show or not the progress bar. The field is not mandatory, but by default it is true
+  progressbar_percentage | ``` boolean ``` | no | ``` true ``` | To show or not the progress bar. The field is not mandatory, but by default it is true
   countdown | ``` boolean ``` | no | ``` true ``` | To show or not the progress bar. The field is not mandatory, but by default it is true
   add_class_to_parent | ``` string ``` | no | ``` undefined ``` | Just to customizing counter
   bg_color | ``` string ``` | no | ``` undefined ``` | In the css there is the basic color of the plugin, but with this property you can pass a class to overwrite the base color
