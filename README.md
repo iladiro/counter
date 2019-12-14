@@ -4,7 +4,7 @@ Counter plugin with countdown and progress bar, flexible and easily customizable
 # Before start
 
   1. [Download ZIP](https://github.com/iladiro/counter/archive/master.zip)
-  2. First, copy and paste counter.js in your project, and link to it before the closing </body> element.
+  2. First, copy and paste counter.js in your project, and link to it before the closing ```</body>``` element.
   3. Next, you need to copy and paste css into your project. We can include both SASS or CSS file.
 
 # Getting Setup
