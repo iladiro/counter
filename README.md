@@ -66,6 +66,10 @@ This is the basic template, but through the data attributes, which you find in t
 
 Below the data attributes to use in your template
 
+**General**
+  - **main counter title**: data-counter: "title"
+  - **expired message**: data-counter: "expired_alert"
+
 **Progressbar**:
   - **progressbar container**: data-counter: "progress_bar",
   - **missing field**: data-counter="missing",
