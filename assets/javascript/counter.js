@@ -53,10 +53,16 @@ const Counter = (function() {
       // end
     }
 
+    dateValidation(value) {
+      const rejex = /[0-9]{4}[\/\-](0[1-9]|1[0-2])[\/\-](0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
+      var res = value.match(rejex);
+      return (res) ? true : false;
+    }
+
     checkAllFieldsPassed(obj) {
       if(obj.container == "" || obj.container == undefined || obj.container == null) throw "container field is required";
-      if(obj.start == "" || obj.start == undefined || obj.start == null) throw "start_date field is required";
-      if(obj.end == "" || obj.end == undefined || obj.end == null) throw "end_date field is required";
+      if(obj.start == "" || obj.start == undefined || obj.start == null || (this.dateValidation(obj.start) === false)) throw "start_date field is required";
+      if(obj.end == "" || obj.end == undefined || obj.end == null || (this.dateValidation(obj.end) === false)) throw "end_date field is required";
     }
 
     getCurrentDate() {
@@ -294,15 +300,3 @@ const Counter = (function() {
 
   return Counter;
 }());
-
-var counter = new Counter(
-  {
-    "container": "#counter",
-    "add_class_to_parent": "custom-count",
-    "start": "2019/12/01 00:00:00",
-    "end": "2019/12/24 18:56:00",
-    "expired_alert": "L'offerta è scaduta"
-  }
-)
-
-counter.start();
