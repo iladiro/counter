@@ -18,7 +18,7 @@
     <h3 class="i-counter__title" data-counter="title">
       Remaining time offered
     </h3>
-    <div class="i-counter__bar" data-counter="progress_bar">
+    <div class="i-counter__bar" data-counter="progressbar">
       <span class="i-counter__bar--missing" data-counter="missing"></span>
       <span class="i-counter__bar--past" data-counter="past">
     </div>
@@ -46,6 +46,17 @@
   </div>
 
   <script type="text/javascript" src="javascript/counter.js"></script>
+  <script>
+    var counter = new Counter(
+      {
+        "container": "#counter",
+        "start": "2019/12/01 00:00:00",
+        "end": "2019/12/24 18:56:00"
+      }
+    )
+
+    counter.start();
+  </script>
 
 </body>
 </html>

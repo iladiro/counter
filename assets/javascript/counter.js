@@ -26,7 +26,7 @@ const Counter = (function() {
           "progressbar": opts.progressbar === false ? false : true,
           "countdown": opts.countdown === false ? false : true,
           "labels": opts.labels ? opts.labels : undefined,
-          "size_progressbar": opts.size_progressbar ? opts.size_progressbar : undefined,
+          "progressbar_size": opts.progressbar_size ? opts.progressbar_size : undefined,
           "expired_alert": opts.expired_alert ? opts.expired_alert : undefined,
           "title": opts.title ? opts.title : undefined,
           "distance": ""
@@ -44,7 +44,7 @@ const Counter = (function() {
         "minutes_label": document.querySelector(this.config.container).querySelector('[data-counter="minutes_label"]'),
         "seconds_label": document.querySelector(this.config.container).querySelector('[data-counter="seconds_label"]'),
         "expired_alert": document.querySelector(this.config.container).querySelector('[data-counter="expired_alert"]'),
-        "progress_bar": document.querySelector(this.config.container).querySelector('[data-counter="progress_bar"]'),
+        "progressbar": document.querySelector(this.config.container).querySelector('[data-counter="progressbar"]'),
         "missing_field": document.querySelector(this.config.container).querySelector('[data-counter="missing"]'),
         "past_field": document.querySelector(this.config.container).querySelector('[data-counter="past"]'),
         "countdown": document.querySelector(this.config.container).querySelector('[data-counter="countdown"]'),
@@ -162,7 +162,14 @@ const Counter = (function() {
 
       if(this.config.distance <= 0) {
         this.destroy(this.countdown_run);
-        this.printExpiredText();
+        if(this.config.expired_alert !== undefined) {
+          if(this.selectors.expired_alert) {
+            this.printExpiredText();
+          } else {
+            throw 'It was impossible to retrieve the selector (data-counter = "expired_alert").' +
+            ' It is mandatory to insert them in the template if the "expired_alert" property is passed valued'
+          }
+        }
         return {
           "days": "0",
           "hours": "0",
@@ -214,9 +221,7 @@ const Counter = (function() {
     }
 
     changeColorToProgressbar() {
-      if(this.config.bg_color !== undefined) {
-        this.selectors.missing_field.classList.add(this.config.bg_color);
-      }
+      this.selectors.missing_field.classList.add(this.config.bg_color);
     }
 
     progressCounterBar() {
@@ -238,23 +243,21 @@ const Counter = (function() {
       }
     }
 
-    resizeProgressBarCounter(obj) {
+    resizeProgressCounterBar(obj) {
       //console.log(obj);
       this.selectors.missing_field.style.width = obj.missing + "%";
       this.selectors.past_field.style.width = obj.past + "%";
     }
 
     progressbarSize() {
-      if(this.config.size_progressbar != undefined) {
-        if(this.config.size_progressbar == "xs") {
-          this.selectors.progress_bar.classList.add("counter__bar--xs");
-        } else if(this.config.size_progressbar == "sm") {
-          this.selectors.progress_bar.classList.add("counter__bar--sm");
-        } else if(this.config.size_progressbar == "md") {
-          this.selectors.progress_bar.classList.add("counter__bar--md");
-        } else if(this.config.size_progressbar == "lg") {
-          this.selectors.progress_bar.classList.add("counter__bar--lg");
-        }
+      if(this.config.progressbar_size == "xs") {
+        this.selectors.progressbar.classList.add("counter__bar--xs");
+      } else if(this.config.progressbar_size == "sm") {
+        this.selectors.progressbar.classList.add("counter__bar--sm");
+      } else if(this.config.progressbar_size == "md") {
+        this.selectors.progressbar.classList.add("counter__bar--md");
+      } else if(this.config.progressbar_size == "lg") {
+        this.selectors.progressbar.classList.add("counter__bar--lg");
       }
     }
 
@@ -264,35 +267,91 @@ const Counter = (function() {
       this.config.total_days = this.calculateTotalDays();
       this.config.total_time = this.calculateTotalTime();
 
-      this.printLabel();
-      this.printTitle();
-      this.progressbarSize();
-      this.changeColorToProgressbar();
-
       if(this.config.add_class_to_parent) {
         document.querySelector(this.config.container).classList.add(this.config.add_class_to_parent);
       }
 
-      if(this.config.countdown == true) {
-        this.countdown_run = setInterval(function() {
-          let obj = _this.countdown();
-          _this.printTime(obj);
-        }, 1000);
-      } else {
-        this.selectors.countdown.remove();
+      if(this.config.title !== undefined) {
+        if(this.selectors.title) {
+          this.printTitle();
+        }
       }
 
-      if(this.config.progressbar == true) {
+      // Countdown block
+      if(this.config.countdown) {
+        if(this.config.labels !== undefined) {
+          if(this.selectors.days_label && this.selectors.hours_label && this.selectors.minutes_label && this.selectors.seconds_label) {
+            this.printLabel();
+          } else {
+            throw 'It was impossible to retrieve the selector (data-counter = "days_label"),' +
+            ' (data-counter = "hours_label"), (data-counter = "minutes_label"),' +
+            ' (data-counter = "seconds_label"). It is mandatory to insert them in' +
+            ' the template if the "labels" property is passed valued'
+          }
+        }
+
+        if(this.selectors.days_field && this.selectors.hours_field && this.selectors.minutes_field && this.selectors.seconds_field) {
+          this.countdown_run = setInterval(function() {
+            let obj = _this.countdown();
+            _this.printTime(obj);
+          }, 1000);
+        } else {
+          throw 'It was impossible to retrieve the selector (data-counter = "days"),' +
+          ' (data-counter = "hours"), (data-counter = "minutes"),' +
+          ' (data-counter = "seconds"). It is mandatory to insert them in' +
+          ' the template.'
+        }
+      } else {
+        if(this.selectors.countdown) {
+          this.selectors.countdown.remove();
+        }
+      }
+      // end
+
+      // Progressbar
+      if(this.config.progressbar) {
+
+        if(this.config.progressbar_size !== undefined) {
+          if(this.selectors.progressbar) {
+            this.progressbarSize();
+          } else {
+            throw 'It was impossible to retrieve the selector (data-counter = "progressbar").' +
+            ' It is mandatory to insert them in the template if the "progressbar_size"' +
+            ' property is passed valued'
+          }
+        }
+
+        if(this.config.bg_color !== undefined) {
+          if(this.selectors.missing_field) {
+            this.changeColorToProgressbar();
+          } else {
+            throw 'It was impossible to retrieve the (data-counter = "missing")' +
+                  ' selector. It is mandatory to insert' +
+                  ' it in the template if the "progressbar" property is not passed' +
+                  ' to false or is passed to true because the default is true'
+          }
+        }
+
         let run = this.progressCounterBar();
-        this.resizeProgressBarCounter(run);
 
-        this.progressbar_run = setInterval(function() {
-          let obj = _this.progressCounterBar();
-          _this.resizeProgressBarCounter(obj);
-        }, 60000);
+        if(this.selectors.missing_field && this.selectors.past_field) {
+          this.resizeProgressCounterBar(run);
+          this.progressbar_run = setInterval(function() {
+            let obj = _this.progressCounterBar();
+            _this.resizeProgressCounterBar(obj);
+          }, 60000);
+        } else {
+          throw 'It was impossible to retrieve the (data-counter = "missing")' +
+                ' and (data-counter = "past") selectors. It is mandatory to insert' +
+                ' them in the template if the "progressbar" property is not passed' +
+                ' to false or is passed to true because the default is true'
+        }
       } else {
-        this.selectors.progress_bar.remove();
+        if(this.selectors.progressbar) {
+          this.selectors.progressbar.remove();
+        }
       }
+      // end
 
     }
 
@@ -300,15 +359,3 @@ const Counter = (function() {
 
   return Counter;
 }());
-
-// var counter = new Counter(
-//   {
-//     "container": "#counter",
-//     "add_class_to_parent": "custom-count",
-//     "start": "2019/12/01 00:00:00",
-//     "end": "2019/12/24 18:56:00",
-//     "expired_alert": "L'offerta è scaduta"
-//   }
-// )
-//
-// counter.start();
