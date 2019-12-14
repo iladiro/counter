@@ -25,7 +25,7 @@ const Counter = (function() {
           "bg_color": opts.bg_color_class ? opts.bg_color_class : undefined,
           "progressbar": opts.progressbar === false ? false : true,
           "countdown": opts.countdown === false ? false : true,
-          "label_textes": opts.label_textes ? opts.label_textes : undefined,
+          "labels": opts.labels ? opts.labels : undefined,
           "size_progressbar": opts.size_progressbar ? opts.size_progressbar : undefined,
           "expired_alert": opts.expired_alert ? opts.expired_alert : undefined,
           "title": opts.title ? opts.title : undefined,
@@ -188,11 +188,11 @@ const Counter = (function() {
     }
 
     printLabel() {
-      if(this.config.label_textes !== undefined) {
-        this.selectors.days_label.innerText = this.config.label_textes.days;
-        this.selectors.hours_label.innerText = this.config.label_textes.hours;
-        this.selectors.minutes_label.innerText = this.config.label_textes.minutes;
-        this.selectors.seconds_label.innerText = this.config.label_textes.seconds;
+      if(this.config.labels !== undefined) {
+        this.selectors.days_label.innerText = this.config.labels.days;
+        this.selectors.hours_label.innerText = this.config.labels.hours;
+        this.selectors.minutes_label.innerText = this.config.labels.minutes;
+        this.selectors.seconds_label.innerText = this.config.labels.seconds;
       }
     }
 
