@@ -67,6 +67,7 @@ This is the basic template, but through the data attributes, which you find in t
   </div>
 
 ```
+Another example of how you can use the plugin, building your own template [DEMO](https://jsbin.com/vuqajecini/edit?html,css,js,output)
 
 # Data attribute
 
