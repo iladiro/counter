@@ -6,7 +6,7 @@
 
 const Counter = (function() {
 
-  const _opts = Symbol();
+  //const _opts = Symbol();
 
   class Counter {
 
