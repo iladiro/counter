@@ -1,6 +1,6 @@
 {
   "name": "@iladiro/counter",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Counter plugin with countdown and progress bar, flexible and easily customizable",
   "license": "MIT",  
   "main": "assets/javascript/counter.js",
